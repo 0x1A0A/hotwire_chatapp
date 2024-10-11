@@ -13,4 +13,23 @@
 #message-list {
   background-color: beige;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.2rem;
+}
+
+.message {
+  display: flex;
+  gap: 3rem;
+  padding: 2px;
+}
+
+.room-form {
+  padding: 0.4rem;
 }

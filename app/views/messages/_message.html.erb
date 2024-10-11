@@ -1,12 +1,5 @@
-<div id="<%= dom_id message %>">
-  <p>
-    <strong>Content:</strong>
-    <%= message.content %>
-  </p>
-
-  <p>
-    <strong>Room:</strong>
-    <%= message.room_id %>
-  </p>
-
+<div class="message" id="<%= dom_id message %>">
+  <%= message.content %>
+  <%= button_to "x", message, method: :delete %>
 </div>
+

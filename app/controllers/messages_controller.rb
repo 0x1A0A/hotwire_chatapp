@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: "Message was successfully created." }
+        format.html { redirect_to home_index_path(room_id: @message.room_id), notice: "Message was successfully created." }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,19 +52,19 @@ class MessagesController < ApplicationController
     @message.destroy!
 
     respond_to do |format|
-      format.html { redirect_to messages_path, status: :see_other, notice: "Message was successfully destroyed." }
+      format.html { redirect_to home_index_path(room_id: @message.room_id), status: :see_other, notice: "Message was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def message_params
-      params.require(:message).permit(:content, :room_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def message_params
+    params.require(:message).permit(:content, :room_id)
+  end
 end
